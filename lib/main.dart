@@ -17,8 +17,8 @@ class MyApp extends StatelessWidget {
         primaryColor: Colors.deepOrange[800],
         // primarySwatch: Colors.deepOrange,
       ),
-      home: Splash(),
-      // home: viewWebsite(),
+      // home: Splash(),
+      home: viewWebsite(),
     );
   }
 }
