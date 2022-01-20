@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
 class viewWebsite extends StatefulWidget {
@@ -8,13 +9,13 @@ class viewWebsite extends StatefulWidget {
 
 class _viewWebsiteState extends State<viewWebsite> {
   late WebViewController controller;
-
   double progress = 0;
 
   @override
+
   Widget build(BuildContext context) {
     return WillPopScope(
-      onWillPop: () async{
+      onWillPop: () async {
         // stay in the app
         if (await controller.canGoBack()) {
           controller.goBack();
@@ -28,21 +29,21 @@ class _viewWebsiteState extends State<viewWebsite> {
         appBar: PreferredSize(
           preferredSize: Size.fromHeight(35.0),
           child: AppBar(
-          backgroundColor: Color(0xFF0ff5318),
-          actions: [
-            IconButton(
-              icon: Icon(Icons.arrow_back),
-              onPressed: () async {
-                if (await controller.canGoBack()){
-                  controller.goBack();
-                }
-              }, 
-            ),
-            IconButton(
-              onPressed: () => controller.reload(),
-              icon: Icon(Icons.refresh),
-            ),
-          ],
+            backgroundColor: Color(0xFF0ff5318),
+            actions: [
+              IconButton(
+                icon: Icon(Icons.arrow_back),
+                onPressed: () async {
+                  if (await controller.canGoBack()) {
+                    controller.goBack();
+                  }
+                },
+              ),
+              IconButton(
+                onPressed: () => controller.reload(),
+                icon: Icon(Icons.refresh),
+              ),
+            ],
           ),
         ),
         body: _buildWebView(),
@@ -61,15 +62,16 @@ class _viewWebsiteState extends State<viewWebsite> {
         Expanded(
           child: WebView(
             javascriptMode: JavascriptMode.unrestricted,
-            initialUrl: 'http://beta.thelessonteacher.com/login',
-            onWebViewCreated: (controller){
+            initialUrl: 'http://app.thelessonteacher.com/login',
+            onWebViewCreated: (controller) {
               this.controller = controller;
             },
-            onProgress: (progress) => 
-              setState(() => this.progress = progress / 100),
+            onProgress: (progress) =>
+                setState(() => this.progress = progress / 100),
           ),
         ),
       ],
     );
   }
+
 }

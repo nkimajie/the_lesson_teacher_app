@@ -1,7 +1,10 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.the_lesson_teacher">
+
+    <uses-permission android:name="android.permission.INTERNET"/>
+    
    <application
-        android:label="the_lesson_teacher"
+        android:label="The Lesson Teacher"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher"
         android:usesCleartextTraffic="true">
